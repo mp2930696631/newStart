@@ -24,7 +24,6 @@ public class ReviewUtils {
             }
 
             file.createNewFile();
-            // 测试FileOutputStream
             testFileOutputStream(file, "泽华 abc\n123456\ntest io流");
         } catch (IOException e) {
             e.printStackTrace();
