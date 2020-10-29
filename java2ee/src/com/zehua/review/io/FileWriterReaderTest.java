@@ -14,12 +14,13 @@ public class FileWriterReaderTest {
         String destFileFullName = path + File.separator + destFileName;
 
         File file = new File(originFileFullName);
+        File destFile = new File(destFileFullName);
 
         // testFileReader(file);
 
         // testFileWriter(file, "就让大于冲刷记忆中的沙123\n让我了如牵挂浪迹在天涯");
 
-        testFileWriterReader(file, new File(destFileName));
+        testFileWriterReader(file, destFile);
     }
 
     public static void testFileReader(File file) {

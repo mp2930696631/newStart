@@ -4,7 +4,7 @@ import com.zehua.review.ReviewUtils;
 
 import java.io.*;
 
-public class FileInputOutputStreamTest {
+public class BufferedInputOutStreamTest {
 
     public static void main(String[] args) {
         String path = System.getProperty("user.dir");
@@ -16,23 +16,21 @@ public class FileInputOutputStreamTest {
         File file = new File(originFileFullName);
         File destFile = new File(destFileFullName);
 
-        // 测试FileInputStream
-        // testFileInputStream(file);
+        // testBufferedInputStream(file);
 
-        // 测试文件复制
-        testFileInOutputStream(file, destFile);
-
+        testBufferedOutputStream(file, "123456\nzhuehuafhdui\nfe456789");
     }
 
+    public static void testBufferedInputStream(File file) {
+        ReviewUtils.initFileNoChinese(file);
 
-    public static void testFileInputStream(File file) {
-        ReviewUtils.initFileWithChinese(file);
         try (
-                FileInputStream fis = new FileInputStream(file)
+                InputStream is = new FileInputStream(file);
+                BufferedInputStream bis = new BufferedInputStream(is)
         ) {
             byte[] buffer = new byte[1024];
             int length = 0;
-            while ((length = fis.read(buffer)) != -1) {
+            while ((length = bis.read(buffer)) != -1) {
                 System.out.println(new String(buffer, 0, length));
             }
         } catch (FileNotFoundException e) {
@@ -42,27 +40,19 @@ public class FileInputOutputStreamTest {
         }
     }
 
-    public static void testFileOutputStream(File file, String data) {
-        ReviewUtils.testFileOutputStream(file, data);
-    }
-
-    public static void testFileInOutputStream(File origin, File dest) {
-        ReviewUtils.initFileNoChinese(origin);
-        ReviewUtils.initFileNoChinese(dest);
+    public static void testBufferedOutputStream(File file, String data) {
         try (
-                FileInputStream fis = new FileInputStream(origin);
-                FileOutputStream fos = new FileOutputStream(dest);
+                OutputStream os = new FileOutputStream(file);
+                BufferedOutputStream bos = new BufferedOutputStream(os);
         ) {
-            byte[] buffer = new byte[1024];
-            int length = 0;
-            while ((length = fis.read(buffer)) != -1) {
-                fos.write(buffer, 0, length);
-            }
-            fos.flush();
+
+            bos.write(data.getBytes());
+            bos.flush();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 }
