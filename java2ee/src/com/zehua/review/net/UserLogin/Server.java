@@ -10,6 +10,8 @@ import java.util.Scanner;
  * server端不断接收服务器端的连接，挺另起一个线程去处理与服务器端的通信
  * 需要注意的有两点
  * 1、每次发送数据的时候，末尾需要带上\n用于标识信息发送端已经发送完数据
+ * 1、每次发送数据的时候，末尾需要带上\n用于标识信息发送端已经发送完数据
+ * 1、每次发送数据的时候，末尾需要带上\n用于标识信息发送端已经发送完数据
  * 2、scanner对象最好定义为一个全局变量，避免出现java.util.NoSuchElementException: No line found
  * @Auther zehua
  * @Date 2020/10/30 9:31
