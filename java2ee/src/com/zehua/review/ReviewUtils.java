@@ -1,6 +1,11 @@
 package com.zehua.review;
 
+import com.zehua.review.lambda.Student;
+
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.stream.IntStream;
 
 /**
  * @Auther zehua
@@ -58,6 +63,18 @@ public class ReviewUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static ArrayList<Student> generateStudents() {
+        ArrayList<Student> students = new ArrayList<>();
+        Random random = new Random();
+        for (int i = 0; i < 10; i++) {
+            IntStream intStream = random.ints(60, 101);
+            int grade = intStream.findFirst().getAsInt();
+            students.add(new Student("zehua", grade));
+        }
+
+        return students;
     }
 
 }

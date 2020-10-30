@@ -1,5 +1,7 @@
 package com.zehua.review.lambda;
 
+import com.zehua.review.ReviewUtils;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -16,13 +18,7 @@ import java.util.stream.IntStream;
 public class LambdaComparator {
 
     public static void main(String[] args) {
-        ArrayList<Student> students = new ArrayList<>();
-        Random random = new Random();
-        for (int i = 0; i < 10; i++) {
-            IntStream intStream = random.ints(60, 101);
-            int grade = intStream.findFirst().getAsInt();
-            students.add(new Student("zehua", grade));
-        }
+        ArrayList<Student> students = ReviewUtils.generateStudents();
 
         Comparator<Student> comparator = (s1, s2) -> s1.getGrade() - s2.getGrade();
         Collections.sort(students, comparator);
