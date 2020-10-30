@@ -5,6 +5,7 @@ import java.net.Socket;
 import java.util.Scanner;
 
 /**
+ * 注意：采用一问一答模式，客户端登录成功后，需先发送消息，然后服务器一句，客户端一句
  * 客户端
  * 1、密码可以输错五次。五次后自动断开
  * 2、scanner对象也最好定义成全局的
