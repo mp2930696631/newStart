@@ -6,7 +6,7 @@ import java.io.*;
 
 /**
  * @Auther zehua
- * @Date 2020/10/30 9:09
+ * @Date 2020/10/30 9:53
  **/
 public class FileInputOutputStreamTest {
 

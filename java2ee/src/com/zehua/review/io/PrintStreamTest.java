@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /**
  * @Auther zehua
- * @Date 2020/10/30 9:10
+ * @Date 2020/10/30 12:07
  **/
 public class PrintStreamTest {
 
