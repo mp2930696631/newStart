@@ -2,6 +2,10 @@ package com.zehua.review.io.entity;
 
 import java.io.Serializable;
 
+/**
+ * @Auther zehua
+ * @Date 2020/10/30 9:10
+ **/
 public class Student implements Serializable {
     private static final long serialVersionUID = -3604722901058134696L;
 

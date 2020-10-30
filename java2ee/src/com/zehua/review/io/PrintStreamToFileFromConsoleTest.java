@@ -2,6 +2,10 @@ package com.zehua.review.io;
 
 import java.io.*;
 
+/**
+ * @Auther zehua
+ * @Date 2020/10/30 9:10
+ */
 public class PrintStreamToFileFromConsoleTest {
 
     public static void main(String[] args) {

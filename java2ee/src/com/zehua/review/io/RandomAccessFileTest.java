@@ -5,6 +5,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
+/**
+ * @Auther zehua
+ * @Date 2020/10/30 9:10
+ */
 public class RandomAccessFileTest {
 
     public static void main(String[] args) {

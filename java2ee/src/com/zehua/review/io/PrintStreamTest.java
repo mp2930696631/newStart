@@ -3,6 +3,10 @@ package com.zehua.review.io;
 import java.io.*;
 import java.util.Scanner;
 
+/**
+ * @Auther zehua
+ * @Date 2020/10/30 9:10
+ **/
 public class PrintStreamTest {
 
     public static void main(String[] args) {

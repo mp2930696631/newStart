@@ -4,6 +4,10 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+/**
+ * @Auther zehua
+ * @Date 2020/10/30 9:09
+ **/
 public class ByteArrayInputOutputStreamTest {
 
     public static void main(String[] args) {
