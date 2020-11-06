@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+        ">
+
+    <!--通过property给属性赋值, name属性与setter方法第二个单词得首字母小写有关-->
+    <!--<bean id="person" class="com.hz.spring_ioc_xml.entity.Person">
+        <property name="name" value="zehua"></property>
+        <property name="age" value="22"></property>
+        <property name="address" ref="address"></property>
+    </bean>-->
+    <bean id="address" class="com.hz.spring_ioc_xml.entity.Address">
+        <property name="province" value="湖南"></property>
+        <property name="city" value="邵阳"></property>
+    </bean>
+
+    <!--通过构造函数给bean属性赋值-->
+    <!--<bean id="person" class="com.hz.spring_ioc_xml.entity.Person">
+        <constructor-arg name="name" value="xiao泽华"></constructor-arg>
+        <constructor-arg name="age" value="22"></constructor-arg>
+        <constructor-arg name="address" ref="address"></constructor-arg>
+    </bean>-->
+
+    <!--通过p命名空间给bean属性赋值，
+    注意：只需要添加xmlns:p="http://www.springframework.org/schema/p"
+    而不像context一样还要添加
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    -->
+    <!--<bean id="person" class="com.hz.spring_ioc_xml.entity.Person" p:name="zehua" p:age="22"
+          p:address-ref="address"></bean>-->
+
+    <!--为复杂类型赋值-->
+    <!--<bean id="student" class="com.hz.spring_ioc_xml.entity.Student">
+        <property name="address" ref="address"></property>
+        <property name="scores">
+            <array>
+                <value>80</value>
+                <value>85</value>
+                <value>90</value>
+            </array>
+        </property>
+        <property name="map">
+            <map>
+                <entry key="zehua" value="555"></entry>
+            </map>
+        </property>
+        <property name="list">
+            <list>
+                <value>50</value>
+                <value>fegr</value>
+            </list>
+        </property>
+        <property name="set">
+            <set>
+                <bean class="com.hz.spring_ioc_xml.entity.Address">
+                    <property name="province" value="hunan"></property>
+                    <property name="city" value="xinshao"></property>
+                </bean>
+            </set>
+        </property>
+        <property name="properties">
+            <props>
+                <prop key="zeee">555</prop>
+                <prop key="asf">4444</prop>
+            </props>
+        </property>
+    </bean>-->
+
+    <!--通过集成关系为bean配置属性-->
+    <!--<bean id="person" class="com.hz.spring_ioc_xml.entity.Person">
+        <property name="name" value="zehua"></property>
+        <property name="age" value="22"></property>
+        <property name="address" ref="address"></property>
+    </bean>
+    <bean id="student" class="com.hz.spring_ioc_xml.entity.Student" parent="person">
+    </bean>-->
+
+    <!--bean的依赖关系-->
+    <!--<bean id="person" class="com.hz.spring_ioc_xml.entity.Person" depends-on="address">
+        <property name="address" ref="address"></property>
+    </bean>-->
+
+    <!--bean作用域控制-->
+    <!--<bean id="person" class="com.hz.spring_ioc_xml.entity.Person" scope="prototype">
+        <property name="address" ref="address"></property>
+        <property name="name" value="zehua"></property>
+        <property name="age" value="22"></property>
+    </bean>-->
+
+    <!--利用工厂模式创建bean，让spring容器为我们管理bean
+    可以通过constructor-arg传递参数
+    静态
+    -->
+    <!--<bean id="person" class="com.hz.spring_ioc_xml.faactory.MyFactory" factory-method="getPersonStatic"></bean>-->
+    <!--实例工厂-->
+    <!--<bean id="myFactory" class="com.hz.spring_ioc_xml.faactory.MyFactory"></bean>
+    <bean id="person" factory-bean="myFactory" factory-method="getPerson">
+        <constructor-arg name="name" value="泽华"></constructor-arg>
+    </bean>-->
+
+    <!--继承factoryBean来创建bean-->
+    <!--<bean id="person" class="com.hz.spring_ioc_xml.faactory.MyFactoryBean"></bean>-->
+
+    <!--bean的创建与销毁-->
+    <!--<bean id="person" class="com.hz.spring_ioc_xml.entity.Person" init-method="init" destroy-method="destroy">
+    </bean>-->
+
+    <!--配置bean初始化前后处理方法-->
+    <!--<bean id="myBeanPostProcessor" class="com.hz.spring_ioc_xml.precessor.MyBeanPostProcessor"></bean>
+    <bean id="person" class="com.hz.spring_ioc_xml.entity.Person"></bean>-->
+
+    <!--引入第三方包-->
+    <!--<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.user}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>-->
+    <!--加载配置文件-->
+    <!--<context:property-placeholder location="classpath:db.properties"></context:property-placeholder>-->
+
+    <!--基于xml的自动装配
+    byName:也是基于setter方法第二个单词首字母小写的单词
+    byType:
+    constructor: 先按构造器参数的类型进行查找，如果找到多个，再按id进行查找
+    注意：如果使用constructor进行注入的话， 在这个例子中，person类中必须有一个只包含Address的构造函数
+    -->
+    <bean id="person" class="com.hz.spring_ioc_xml.entity.Person" autowire="constructor">
+        <property name="name" value="小泽"></property>
+        <property name="age" value="22"></property>
+    </bean>
+
+</beans>
