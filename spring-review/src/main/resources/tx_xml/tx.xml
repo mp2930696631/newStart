@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop 
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx 
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context.xsd
+">
+    <context:property-placeholder location="classpath:db.properties"></context:property-placeholder>
+    <context:component-scan base-package="com.hz.tx"></context:component-scan>
+
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.user}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <constructor-arg name="dataSource" ref="dataSource"></constructor-arg>
+    </bean>
+
+    <!--事务管理器，相当于切面-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <constructor-arg name="dataSource" ref="dataSource"></constructor-arg>
+    </bean>
+
+    <!--为service方法定制事务-->
+    <aop:config>
+        <aop:pointcut id="pointCutSerice" expression="execution(* com.hz.tx.service.BookServiceImpl.*(..))"/>
+        <!--类比于aop的xml配置。这里就相当于配置了一个切面（指向事务管理器）-->
+        <aop:advisor advice-ref="myAdviceService" pointcut-ref="pointCutSerice"></aop:advisor>
+    </aop:config>
+    <tx:advice id="myAdviceService" transaction-manager="transactionManager">
+        <!--这里相当于在execution表达式上做更细微的控制，精确到具体方法-->
+        <tx:attributes>
+            <!--*表示在execution表达式代表的每一个方法上都加上@Transcational（默认）-->
+            <!--<tx:method name="*"/>-->
+            <tx:method name="checkout"></tx:method>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:pointcut id="pointCutDao" expression="execution(* com.hz.tx.dao.BookDaoImpl.*(..))"/>
+        <!--类比于aop的xml配置。这里就相当于配置了一个切面（指向事务管理器）-->
+        <aop:advisor advice-ref="myAdviceDao" pointcut-ref="pointCutDao"></aop:advisor>
+    </aop:config>
+    <tx:advice id="myAdviceDao" transaction-manager="transactionManager">
+        <!--这里相当于在execution表达式上做更细微的控制，精确到具体方法-->
+        <tx:attributes>
+            <!--*表示在execution表达式代表的每一个方法上都加上@Transcational（默认）-->
+            <!--<tx:method name="*"/>-->
+            <tx:method name="updateAccountByName" propagation="NESTED"></tx:method>
+            <tx:method name="updatebStockById"></tx:method>
+        </tx:attributes>
+    </tx:advice>
+
+</beans>
