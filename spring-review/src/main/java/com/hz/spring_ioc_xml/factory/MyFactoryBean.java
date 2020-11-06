@@ -1,4 +1,4 @@
-package com.hz.spring_ioc_xml.faactory;
+package com.hz.spring_ioc_xml.factory;
 
 import com.hz.spring_ioc_xml.entity.Address;
 import com.hz.spring_ioc_xml.entity.Person;

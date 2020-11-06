@@ -98,15 +98,15 @@
     可以通过constructor-arg传递参数
     静态
     -->
-    <!--<bean id="person" class="com.hz.spring_ioc_xml.faactory.MyFactory" factory-method="getPersonStatic"></bean>-->
+    <!--<bean id="person" class="com.hz.spring_ioc_xml.factoryMyFactory" factory-method="getPersonStatic"></bean>-->
     <!--实例工厂-->
-    <!--<bean id="myFactory" class="com.hz.spring_ioc_xml.faactory.MyFactory"></bean>
+    <!--<bean id="myFactory" class="com.hz.spring_ioc_xml.factoryMyFactory"></bean>
     <bean id="person" factory-bean="myFactory" factory-method="getPerson">
         <constructor-arg name="name" value="泽华"></constructor-arg>
     </bean>-->
 
     <!--继承factoryBean来创建bean-->
-    <!--<bean id="person" class="com.hz.spring_ioc_xml.faactory.MyFactoryBean"></bean>-->
+    <!--<bean id="person" class="com.hz.spring_ioc_xml.factoryMyFactoryBean"></bean>-->
 
     <!--bean的创建与销毁-->
     <!--<bean id="person" class="com.hz.spring_ioc_xml.entity.Person" init-method="init" destroy-method="destroy">
