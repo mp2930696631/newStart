@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+">
+
+    <!--
+    @Controller: 控制器，在controller层添加此注解
+    @Service: 业务逻辑，在业务逻辑层添加此注解
+    @Repository: 仓库管理，给数据访问层添加此注解
+    @Component: 组件，不属于以上类型的java类上添加此注解
+
+    默认是扫描本包及其子包，如果想加入include-filter标签，
+    则需要在component-scan上添加use-default-filters属性，设置值为false，不然还是默认扫描方式，
+    例如，下面采用这种方式的话，就只有PersonController被注入ioc
+
+    当然也可以添加exclude-filter标签，这样的话就不需要添加use-default-filters属性
+    -->
+    <!--<context:component-scan base-package="com.hz.zehua_spring_ioc_annoc_anno" use-default-filters="false">
+        <context:include-filter type="assignable" expression="com.hz.zehua_spring_ioc_annoc_anno.controller.PersonController"/>
+    </context:component-scan>-->
+
+    <!--
+    @AutoWired:默认按照类型进行自动装配，没有找到，再按照bean id
+    @Resource：默认按照bean id进行自动装配， 没有找到，再按照类型
+    -->
+    <context:component-scan base-package="com.hz.spring_ioc_anno">
+    </context:component-scan>
+</beans>
