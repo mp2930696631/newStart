@@ -6,42 +6,43 @@ import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Service;
 
 /**
+ * 最后使用xml的方式来使用spring的aop，所以下面的注解被注释掉了
  * @Auther zehua
  * @Date 2020/11/6 17:19
  */
-@Aspect
-@Service
+//@Aspect
+//@Service
 public class LogUtil2 {
-    @Pointcut("execution(* com.hz..divide(..))")
+    //@Pointcut("execution(* com.hz..divide(..))")
     private void pointCut() {
     }
 
-    @Before("pointCut()")
+    //@Before("pointCut()")
     public void before(JoinPoint joinPoint) {
         String name = joinPoint.getSignature().getName();
         System.out.println(name + "方法开始被执行.....22222222222222");
     }
 
     // 因为这个通知无论如何都会被执行，所以相当于放在finally语句中
-    @After("pointCut()")
+    //@After("pointCut()")
     public void after(JoinPoint joinPoint) {
         String name = joinPoint.getSignature().getName();
         System.out.println(name + "方法执行结束......22222222222222");
     }
 
-    @AfterThrowing(value = "pointCut()", throwing = "e")
+    //@AfterThrowing(value = "pointCut()", throwing = "e")
     public void afterThrowing(JoinPoint joinPoint, Throwable e) {
         String name = joinPoint.getSignature().getName();
         System.out.println(name + "方法抛出异常throwing.......22222222222222异常信息为：" + e.getMessage());
     }
 
-    @AfterReturning(value = "pointCut()", returning = "o")
+    //@AfterReturning(value = "pointCut()", returning = "o")
     public void afterReturing(JoinPoint joinPoint, Object o) {
         String name = joinPoint.getSignature().getName();
         System.out.println(name + "方法正常返回returing....22222222222222...结果是：" + o);
     }
 
-    @Around("pointCut()")
+    //@Around("pointCut()")
     public Object round(ProceedingJoinPoint proceeding) {
         System.out.println("round before...22222222222222..");
         Object proceed = null;

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
  * @Auther zehua
  * @Date 2020/11/6 13:47
  */
-@Component
+//@Component
 public class MyCalculator {
 
     public int add(int a, int b) {
