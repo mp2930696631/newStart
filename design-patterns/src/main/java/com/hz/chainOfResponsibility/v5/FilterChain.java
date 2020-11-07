@@ -3,6 +3,8 @@ package com.hz.chainOfResponsibility.v5;
 import java.util.ArrayList;
 
 /**
+ * 需要引入一个指向下一个需要执行的filter的执行，index
+ *
  * @Auther zehua
  * @Date 2020/11/8 5:59
  */
