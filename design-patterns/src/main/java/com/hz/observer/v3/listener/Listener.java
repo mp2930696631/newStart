@@ -3,6 +3,8 @@ package com.hz.observer.v3.listener;
 import com.hz.observer.v3.event.Event;
 
 /**
+ * m1-m9这些无用的方法由adapter来实现
+ *
  * @Auther zehua
  * @Date 2020/11/8 9:11
  */
