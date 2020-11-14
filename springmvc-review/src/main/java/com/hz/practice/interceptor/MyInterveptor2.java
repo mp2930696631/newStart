@@ -17,6 +17,8 @@ public class MyInterveptor2 implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         if (handler instanceof InterceptorController){
             System.out.println("ccccccccooooooo22222222");
+        }else {
+            System.out.println(handler);
         }
 
         System.out.println("2222 pre handle");
