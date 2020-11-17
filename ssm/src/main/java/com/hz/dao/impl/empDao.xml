@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hz.dao.EmpDao">
+
+    <select id="selectById" resultType="com.hz.entity.Emp">
+        select * from emp where empno=#{empno}
+    </select>
+
+    <insert id="insertEmp">
+        insert into emp (empno, ename) values (#{empno}, #{ename})
+    </insert>
+
+    <update id="updateEmp">
+        update emp set sal=#{sal} where empno=#{empno}
+    </update>
+
+    <delete id="deleteEmp">
+        delete from emp where empno=#{empno}
+    </delete>
+
+</mapper>
