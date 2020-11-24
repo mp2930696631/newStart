@@ -13,8 +13,8 @@ public class MyImportSelector implements ImportSelector {
     @Override
     public String[] selectImports(AnnotationMetadata importingClassMetadata) {
         String service = StarterService.class.getName();
-        System.out.println(service);
+        String controller = StarterController.class.getName();
 
-        return new String[]{service};
+        return new String[]{service, controller};
     }
 }
