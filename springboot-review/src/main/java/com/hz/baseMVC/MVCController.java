@@ -1,5 +1,6 @@
 package com.hz.baseMVC;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import starter.com.hz.configurationBean.StarterConfiguration;
+import starter.com.hz.service.StarterService;
 
 /**
  * @author zehua
@@ -14,9 +17,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 public class MVCController {
+    @Autowired
+    private StarterConfiguration configuration;
+
+    @Autowired
+    private StarterService starterService;
 
     @RequestMapping("/testStatic")
     public String hello() {
+        System.out.println(configuration);
         return "hello.html";
     }
 
