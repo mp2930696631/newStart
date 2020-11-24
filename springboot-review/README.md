@@ -24,7 +24,7 @@ SpringBootServletInitializer
     }
 ```
 
-##限制文件上传大小的两种方式
+## 限制文件上传大小的两种方式
 >1、@Bean
 ```
 @Bean
@@ -41,13 +41,13 @@ SpringBootServletInitializer
 spring.servlet.multipart.max-request-size=3KB
 ```
 
-##在测试session监听器的时候，需要注意使用requst.getSession()来创建session
+## 在测试session监听器的时候，需要注意使用requst.getSession()来创建session
 - 如果不使用req.getSession是不会创建session的，如果调用该方法，会自动像cookie中写入JSESSIONID
   而如果请求jsp页面的话，因为jsp内嵌session,所有会有jsessionid
   
 - 在使用监听器的时候，可以使用WebListener，也可以直接注册为bean
 
-##springboot整合mybatis
+## springboot整合mybatis
 >1、mybatis的starter版本是2.1.4，不支持最新版的springboot
 >2、使用xml来进行配置,（就是依据ssm中的mybatis配置来的）步骤如下
 - 导入pom依赖,(需要注意的的点就是：因为ssm中的mybatis依赖spring中的一些东西，如tx、spring-jdbc等，所有最后加入了spring-jdbc-starter)
