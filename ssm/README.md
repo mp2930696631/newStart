@@ -162,6 +162,10 @@
 <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"></property>
     </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+            <property name="basePackage" value="com.hz.dao"></property>
+            <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+        </bean>
 ```
 ###2.3、springmvc相关配置（springmvc.xml）
 >一、开启扫描Controller注解
@@ -248,7 +252,7 @@
         <param-value>classpath:spring.xml</param-value>
     </context-param>
 ```
->三、mybatis需要加上mapper文件的路径
+>三、mybatis需要加上mapper文件(.xml文件)的路径
 ```
 <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"></property>
@@ -262,7 +266,7 @@
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
     </bean>
 
-推荐使用，因为他可以将dao包下面的所有mapper注入到ioc，相当于一些列第二种方式操作的集合
+推荐使用，因为他可以将dao包下面的所有mapper(接口)注入到ioc，相当于一些列第二种方式操作的集合
 ```
 ```
 2、单条注入
