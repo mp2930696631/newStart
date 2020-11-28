@@ -1,0 +1,2 @@
+1、本目录下面的myCallable目录实现了自己的Callable接口，
+通过观察FutureTask源码，发现Callable接口的本质就是在一个Thread中的run方法中调用call方法，内部维持一个挂起的线程的链表，并通过LockSupport进行唤醒和挂起

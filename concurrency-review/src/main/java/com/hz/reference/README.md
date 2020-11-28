@@ -1,0 +1,2 @@
+1、弱引用这一块有点绕，在传入一个ReferenceQueue的情况下，它会讲整个弱引用都丢入到引用队列中
+而这个时候使用其get方法是获取不到值的，对比WeakHashMap，他的Entry也是继承了WeakReference，虽然它只为key创建了弱引用，但是会将整个Entry丢入到引用队列中
