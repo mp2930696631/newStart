@@ -1,0 +1,21 @@
+1、先按下面premain方法上面的注释操作
+2、如果是maven打包的话，默认是不会使用自己的manifest.mf文件的，需要在pom文件中做如下配置
+```
+<build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+```
+3、将改jar包导入其他工程，并且配置jvm参数
+```
+-javaagent:jar包全路径
+```
