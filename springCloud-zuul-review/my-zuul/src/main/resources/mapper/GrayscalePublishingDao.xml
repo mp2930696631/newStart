@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hz.myzuul.dao.GrayscalePublishingDao">
+  <resultMap id="BaseResultMap" type="com.hz.myzuul.entity.GrayscalePublishing">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="service_id" jdbcType="VARCHAR" property="serviceId" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, service_id, version, user_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from grayscale_publishing
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from grayscale_publishing
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.hz.myzuul.entity.GrayscalePublishing" useGeneratedKeys="true">
+    insert into grayscale_publishing (service_id, version, user_id
+      )
+    values (#{serviceId,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.hz.myzuul.entity.GrayscalePublishing" useGeneratedKeys="true">
+    insert into grayscale_publishing
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="serviceId != null">
+        service_id,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="serviceId != null">
+        #{serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hz.myzuul.entity.GrayscalePublishing">
+    update grayscale_publishing
+    <set>
+      <if test="serviceId != null">
+        service_id = #{serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hz.myzuul.entity.GrayscalePublishing">
+    update grayscale_publishing
+    set service_id = #{serviceId,jdbcType=VARCHAR},
+      version = #{version,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="getAllGrayscale" resultType="com.hz.myzuul.entity.GrayscalePublishing">
+    select * from grayscale_publishing
+  </select>
+
+  <select id="getGrayscaleByUserId" resultMap="BaseResultMap">
+    select * from grayscale_publishing where user_id=#{userId,jdbcType=VARCHAR}
+  </select>
+</mapper>
