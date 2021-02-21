@@ -6,7 +6,26 @@
 
     <groupId>com.hz</groupId>
     <artifactId>jvm-review</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>project01</module>
+        <module>project02</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.hz</groupId>
+            <artifactId>z-utils</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.hz</groupId>
+            <artifactId>interf</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
