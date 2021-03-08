@@ -1,6 +1,8 @@
 package com.hz.sort.two.heap;
 
 /**
+ * 堆排序
+ *
  * @author zehua
  * @date 2021/3/7 19:10
  */
@@ -187,6 +189,7 @@ public class HeapSort {
         for (int i : array) {
             System.out.print(i + " ");
         }
+        System.out.println();
     }
 
 }

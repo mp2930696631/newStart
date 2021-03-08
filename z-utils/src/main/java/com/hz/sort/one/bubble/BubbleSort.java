@@ -1,6 +1,8 @@
 package com.hz.sort.one.bubble;
 
 /**
+ * 冒泡排序+鸡尾酒排序
+ *
  * @author zehua
  * @date 2021/3/7 8:38
  * <p>
@@ -143,6 +145,7 @@ public class BubbleSort {
         for (int i : array) {
             System.out.print(i + " ");
         }
+        System.out.println();
     }
 
 }

@@ -1,6 +1,8 @@
 package com.hz.sort.one.insert;
 
 /**
+ * 插入排序
+ *
  * @author zehua
  * @date 2021/3/7 11:32
  * <p>
@@ -38,6 +40,7 @@ public class InsertSort {
         for (int i : array) {
             System.out.print(i + " ");
         }
+        System.out.println();
     }
 
 }

@@ -1,6 +1,8 @@
 package com.hz.sort.one.select;
 
 /**
+ * 选择排序
+ *
  * @author zehua
  * @date 2021/3/7 11:16
  * <p>
@@ -39,6 +41,7 @@ public class SelectSort {
         for (int i : array) {
             System.out.print(i + " ");
         }
+        System.out.println();
     }
 
 }

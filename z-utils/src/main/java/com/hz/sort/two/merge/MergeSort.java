@@ -1,6 +1,8 @@
 package com.hz.sort.two.merge;
 
 /**
+ * 归并排序
+ *
  * @author zehua
  * @date 2021/3/7 18:33
  */
@@ -67,6 +69,7 @@ public class MergeSort {
         for (int i : array) {
             System.out.print(i + " ");
         }
+        System.out.println();
     }
 
 }

@@ -3,6 +3,8 @@ package com.hz.sort.two.quick;
 import java.util.ArrayDeque;
 
 /**
+ * 快速排序
+ *
  * @author zehua
  * @date 2021/3/7 14:42
  */
@@ -179,6 +181,7 @@ public class QuickSort {
         for (int i : array) {
             System.out.print(i + " ");
         }
+        System.out.println();
     }
 
 }
